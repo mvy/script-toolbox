@@ -3,7 +3,8 @@ BEGIN {
     max = 0;
 }
 {
-    print $1" class "$3" (pre-cumul: "nb[$3]")";
+#    print $1" class "$3" (pre-cumul: "nb[$3]")";
+    nb[$3];
     total[$3] += $2; 
     nb[$3]++;
     if($3 > max) {
