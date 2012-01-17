@@ -1,0 +1,5 @@
+#!/bin/bash
+pattern=$1
+file=$2
+
+sed -e 's/ /\n/g' $2 | awk "/$pattern/ {print NR}" 

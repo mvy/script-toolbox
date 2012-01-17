@@ -1,0 +1,26 @@
+#!/bin/bash
+
+gnuplot <<EOF
+set terminal tikz color solid standalone
+set output "times.tex"
+set xlabel "Resolution"
+set ylabel "Thing"
+set key invert reverse Left outside
+set style data histogram
+set boxwidth 0.9 relative 
+set xtics nomirror rotate by -45 scale 0
+set style fill solid
+set style histogram rowstacked 
+plot 'statsort.dat' using 6:xtic(1) title columnhead, \
+    '' using 8 title columnhead, \
+    '' using 10 title columnhead
+set style data linespoints
+plot 'statsort.dat' using 6:xtic(1) title columnhead,\
+    '' using 8 title columnhead,\
+    '' using 10 title columnhead
+plot 'statsort.dat' using 7:xtic(1) title columnhead,\
+    '' using 9 title columnhead,\
+    '' using 11 title columnhead
+EOF
+
+pdflatex "times.tex"

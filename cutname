@@ -1,0 +1,28 @@
+#!/bin/bash
+# The reference filename for columns names
+reffilename=$1
+shift
+# The filename
+filename=$1
+if
+    [ -f $filename ]
+then
+    # If a filename is present, use it as stdin
+    0<&-
+    exec 0<$1
+    shift
+fi
+
+# First column number
+cutlist=`colnum $1 $reffilename`
+shift
+# For each argument, fetch a colnum
+while (($#))
+do
+    # Call the column number lookup script
+    cutlist=$cutlist","`colnum $1 $reffilename`
+    shift
+done
+
+# Do the cut, using stdin file descriptor
+cut -f $cutlist -d\  <&0
