@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# A little example of using gnuplot with stdin from term
 gnuplot <<EOF
 set terminal tikz color solid standalone
 set output "times.tex"

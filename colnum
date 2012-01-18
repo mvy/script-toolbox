@@ -1,5 +1,7 @@
 #!/bin/bash
+# The pattern to match (column name)
 pattern=$1
+# The file to look into
 file=$2
-# All column to lines. Search for the pattern
+# Sed all column to lines. Search for the pattern
 sed -e 's/ /\n/g' $2 | awk "/$pattern/ {print NR}" 

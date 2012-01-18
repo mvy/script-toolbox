@@ -1,4 +1,8 @@
 #!/bin/bash
+# Same function as cut, but uses instead column names store in the $1 argument
+# If $2 is a file, it is redirected to stdin. If not, we use stdin. 
+# Therefore it is possible to pipe into cutname
+
 # The reference filename for columns names
 reffilename=$1
 shift
