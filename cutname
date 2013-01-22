@@ -1,7 +1,14 @@
 #!/bin/bash
-# Same function as cut, but uses instead column names store in the $1 argument
-# If $2 is a file, it is redirected to stdin. If not, we use stdin. 
-# Therefore it is possible to pipe into cutname
+usage="cutname <headerFile> [<contentFile>] <columnName> [<columnName> ...]"
+usage2="If second argument does not match a file, it is assume to be a columname
+and the content is read from stdin"
+if 
+    [ $# -lt 2 ]
+then 
+    echo $usage
+    echo $usage2
+    exit
+fi
 
 # The reference filename for columns names
 reffilename=$1

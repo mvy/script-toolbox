@@ -4,4 +4,4 @@ pattern=$1
 # The file to look into
 file=$2
 # Sed all column to lines. Search for the pattern
-sed -e 's/ /\n/g' $2 | awk "/$pattern/ {print NR}" 
+sed -e 's/ /\n/g' $file | awk "/$pattern/ {print NR}" 
